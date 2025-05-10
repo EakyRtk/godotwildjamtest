@@ -21,8 +21,8 @@ Globals="*res://Autoloads/globals.gd"
 
 [display]
 
-window/size/viewport_width=160
-window/size/viewport_height=90
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
@@ -69,6 +69,7 @@ esc={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+shading/overrides/force_vertex_shading=true
 textures/default_filters/anisotropic_filtering_level=0
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 environment/ssao/quality=0
