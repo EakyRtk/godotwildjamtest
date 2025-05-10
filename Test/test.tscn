@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://2mmhfvd1j6hq"]
+
+[ext_resource type="PackedScene" uid="uid://njpqcdekbq6l" path="res://Test/test_map.blend" id="1_yfa23"]
+[ext_resource type="PackedScene" uid="uid://d0evo3tno3k5i" path="res://Player/player.tscn" id="2_lxp54"]
+[ext_resource type="PackedScene" uid="uid://dxctoe2trb0nc" path="res://Test/structure_test.blend" id="3_jda1s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lxp54"]
+sky_top_color = Color(0.142175, 0.487576, 0.629486, 1)
+sky_horizon_color = Color(0.528224, 0.693481, 0.678865, 1)
+ground_bottom_color = Color(0.257104, 0.446386, 0.411823, 1)
+ground_horizon_color = Color(0.231583, 0.45153, 0.437073, 1)
+sun_angle_max = 3.33
+sun_curve = 6.33363
+
+[sub_resource type="Sky" id="Sky_jda1s"]
+sky_material = SubResource("ProceduralSkyMaterial_lxp54")
+
+[sub_resource type="Environment" id="Environment_1ihti"]
+background_mode = 2
+sky = SubResource("Sky_jda1s")
+tonemap_mode = 1
+glow_enabled = true
+fog_mode = 1
+fog_density = 0.1995
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.253
+fog_depth_curve = 0.870551
+
+[node name="Test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ihti")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.526358, -0.0718338, 0.847223, 0.721627, 0.489226, 0.489809, -0.449669, 0.869194, -0.205671, 0, 5.29972, 0)
+light_color = Color(1, 0.984772, 0.341146, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76893, 0.673377)
+
+[node name="test_map" parent="." instance=ExtResource("1_yfa23")]
+
+[node name="Player" parent="." instance=ExtResource("2_lxp54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83094, 1.31107)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.43277, -7.88697)
+omni_range = 11.8365
+
+[node name="structure_test" parent="." instance=ExtResource("3_jda1s")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -27.222, -1.21398, 3.26268)
