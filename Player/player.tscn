@@ -15,8 +15,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 current = true
 
+[node name="InteractCast" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_hvfyp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_l8h54")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractLabel" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(113.16, 24.56)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "adas"
+scroll_active = false

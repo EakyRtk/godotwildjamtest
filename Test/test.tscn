@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://2mmhfvd1j6hq"]
+[gd_scene load_steps=15 format=3 uid="uid://2mmhfvd1j6hq"]
 
 [ext_resource type="PackedScene" uid="uid://njpqcdekbq6l" path="res://Test/test_map.blend" id="1_yfa23"]
 [ext_resource type="PackedScene" uid="uid://d0evo3tno3k5i" path="res://Player/player.tscn" id="2_lxp54"]
 [ext_resource type="PackedScene" uid="uid://dxctoe2trb0nc" path="res://Test/structure_test.blend" id="3_jda1s"]
+[ext_resource type="PackedScene" uid="uid://cjqunku3n8tuj" path="res://ScreenStuff/screen.tscn" id="4_1ihti"]
+[ext_resource type="Texture2D" uid="uid://deuxiibc583qh" path="res://icon.svg" id="5_su4bj"]
+[ext_resource type="Script" uid="uid://cpls7vyniitla" path="res://Test/world_boundary.gd" id="6_wbqg2"]
+[ext_resource type="Script" uid="uid://dp8kotu546vog" path="res://Utils/interactable.gd" id="7_hxhys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lxp54"]
 sky_top_color = Color(0.142175, 0.487576, 0.629486, 1)
@@ -26,6 +30,18 @@ fog_aerial_perspective = 1.0
 fog_sky_affect = 0.253
 fog_depth_curve = 0.870551
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbqg2"]
+albedo_texture = ExtResource("5_su4bj")
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_su4bj"]
+size = Vector2(27.87, 34.935)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_su4bj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kqi2"]
+size = Vector3(7.01465, 1, 1)
+
 [node name="Test" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -42,11 +58,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76893, 0.673377)
 [node name="test_map" parent="." instance=ExtResource("1_yfa23")]
 
 [node name="Player" parent="." instance=ExtResource("2_lxp54")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83094, 1.31107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.896, 1.311)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.43277, -7.88697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7822, 13.2255, 2.41566)
+layers = 3
 omni_range = 11.8365
 
 [node name="structure_test" parent="." instance=ExtResource("3_jda1s")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -27.222, -1.21398, 3.26268)
+
+[node name="Plane" parent="structure_test" index="0"]
+layers = 2
+
+[node name="Screen" parent="." instance=ExtResource("4_1ihti")]
+transform = Transform3D(0.0656819, 0, -0.997841, 0, 1, 0, 0.997841, 0, 0.0656819, 0, 1.52914, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09509, 6.04968)
+material_override = SubResource("StandardMaterial3D_wbqg2")
+texture = ExtResource("5_su4bj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.0512, 104.523)
+mesh = SubResource("PlaneMesh_su4bj")
+
+[node name="WorldBoundary" type="Area3D" parent="."]
+script = ExtResource("6_wbqg2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.8481, 0)
+shape = SubResource("WorldBoundaryShape3D_su4bj")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96904, 1.93944, 1.43146)
+script = ExtResource("7_hxhys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00732, 0, 0)
+shape = SubResource("BoxShape3D_6kqi2")
+
+[connection signal="body_entered" from="WorldBoundary" to="WorldBoundary" method="_on_body_entered"]
+
+[editable path="structure_test"]
