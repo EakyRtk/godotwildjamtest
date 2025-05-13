@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqnhh4qikfwbf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lrcmf"]
+size = Vector3(12.015, 0.04, 8.175)
+
+[node name="Floor1" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("BoxMesh_lrcmf")
