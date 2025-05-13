@@ -71,7 +71,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 	
-	t_bob += delta * velocity.length() * float(is_on_floor())
+	t_bob += delta * (velocity.length() + 0.3) * float(is_on_floor()) 
+	#* velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 	move_and_slide()
 		
