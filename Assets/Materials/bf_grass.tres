@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bn6t54dyjxdb"]
+
+[ext_resource type="Texture2D" uid="uid://bp1iidhxvb4qs" path="res://Assets/3D Models/textures/Ucupaint bf_grass Color.png" id="1_rwp7b"]
+
+[resource]
+resource_name = "bf_grass"
+cull_mode = 2
+albedo_texture = ExtResource("1_rwp7b")
+metallic = 1.0
+metadata/extras = {
+"yp": {
+"active_ypaint_node": "Group"
+}
+}
