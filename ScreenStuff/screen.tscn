@@ -28,6 +28,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bok05")
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 gui_embed_subwindows = true
+size = Vector2i(607, 512)
 render_target_update_mode = 4
 
 [node name="ScreenScreen" parent="SubViewport" instance=ExtResource("2_bok05")]

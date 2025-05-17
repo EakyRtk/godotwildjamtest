@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://njpqcdekbq6l"
-path="res://.godot/imported/test_map.blend-18256805698df05f4dad4dddbdcad1f1.scn"
+uid="uid://d132dlcagcfqm"
+path="res://.godot/imported/guy.blend-71258c869c0a035373a9f5c195515311.scn"
 
 [deps]
 
-source_file="res://Test/test_map.blend"
-dest_files=["res://.godot/imported/test_map.blend-18256805698df05f4dad4dddbdcad1f1.scn"]
+source_file="res://Test/guy.blend"
+dest_files=["res://.godot/imported/guy.blend-71258c869c0a035373a9f5c195515311.scn"]
 
 [params]
 
@@ -32,16 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Plane": {
-"generate/physics": true
-},
-"PATH:Plane_001": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
